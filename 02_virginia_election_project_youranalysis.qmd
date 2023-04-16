@@ -44,4 +44,8 @@ head(joined_vacomparison)
 joined_vacomparison%>%
 mutate(mc_overperform = pct_mcauliffe - biden_pct, mc_overperform_worsethan10 = if_else(mc_overperform < -10, "YES", "NO"))
 ```
+```{r}
+joined_vacomparison%>%
+mutate(mc_overperform = biden_pct - pct_mcauliffe, mc_overperform_worsethan15 = if_else(mc_overperform < -15, "YES", "NO"))
+```
 

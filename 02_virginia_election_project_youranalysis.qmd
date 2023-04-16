@@ -23,7 +23,8 @@ options(stringsAsFactors = FALSE)
 
 #load saved joined data file from previous script
 joined_vacomparison <- readRDS(here("processed_data", "joined_vacomparison.rds"))
-
+ saveRDS(joined_vacomparison, here("processed_data", "joined_vacomparison.rds"))
+write_csv(joined_vacomparison, here("processed_data", "joined_vacomparison.csv"))
 
 
 ```
@@ -39,3 +40,8 @@ head(joined_vacomparison)
 
 
 ```
+```{r}
+joined_vacomparison%>%
+mutate(mc_overperform = pct_mcauliffe - biden_pct, mc_overperform_worsethan10 = if_else(mc_overperform < -10, "YES", "NO"))
+```
+
